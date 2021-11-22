@@ -5,7 +5,32 @@
 <div class="container">
     <h2>Show Countries Details</h2>
     <div class="wpcf7" id="wpcf7-f156-p143-o1 formwrap">
+        <table class="table" border="1">
+            <thead class=" text-primary">
+              <th>
+                  Country Name
+              </th>
+              <th>
+                  Edit
+              </th>
+              <th>
+                  Delete
+              </th>
+            </thead>
+              <tbody>@if ($countries)
+        @foreach ($countries as $country)
+                <tr>
+                  
+          <td> <h6 class="mt-0">{{$country->name}}</h6></td> 
+           <td><a href="{{ url('countryEdit/'.$country->id) }}" class="btn btn-primary btn-round update ml-auto mr-auto" >Edit</a></td>
+           <td><a href="{{ url('countryDelete/'.$country->id) }}" class="btn btn-primary btn-round update ml-auto mr-auto" >Delete</a></td>
 
+                 </tr> @endforeach
+        @else
+        There is No Countries Data to show..
+        @endif 
+              </tbody>
+            </table>
 
         <div id="link">
             <div style="width: 100%; height: 100%">

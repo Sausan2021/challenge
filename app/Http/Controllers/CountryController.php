@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Country;
 use Illuminate\Http\Request;
 
 class CountryController extends Controller
@@ -15,7 +15,8 @@ class CountryController extends Controller
     {
         //
     }
-
+   
+ 
     /**
      * Show the form for creating a new resource.
      *
@@ -23,7 +24,7 @@ class CountryController extends Controller
      */
     public function create()
     {
-        //
+        return view('countries.Countries');
     }
 
     /**
@@ -34,7 +35,19 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validates = $request->validate([
+            
+            'name' => 'required'
+        ]);
+
+        $id = $request->id;
+        $name = $request->_name;
+        $ca = new Country();
+        $ca->id=$id;
+        $ca->name=$name;
+        $ca->save();
+        return back()->with('success','Country Added successfully!');
+     
     }
 
     /**
@@ -43,9 +56,11 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $countries = Country::all();
+        $data['countries'] = Country::all();
+        return view('countries.ViewData')->with($data);
     }
 
     /**
@@ -56,7 +71,9 @@ class CountryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['countries']=Country::findOrfail($id);
+        return view('countries.Edit',$data);
+
     }
 
     /**
@@ -68,7 +85,13 @@ class CountryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required'
+        ]);
+         $countries = Country::findOrfail($id);
+        $countries->name = $request->input('name');
+        $countries->update();
+        return back()->with('success','Country Updated successfully!');
     }
 
     /**
@@ -79,6 +102,8 @@ class CountryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $countries = Country::findOrfail($id);
+        $countries->delete();
+        return back()->with('success','Country Deleted successfully!');
     }
 }

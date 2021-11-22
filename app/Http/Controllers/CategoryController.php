@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -15,7 +15,8 @@ class CategoryController extends Controller
     {
         //
     }
-
+   
+ 
     /**
      * Show the form for creating a new resource.
      *
@@ -23,7 +24,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('classe.classes');
     }
 
     /**
@@ -34,7 +35,19 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validates = $request->validate([
+            
+            'class_name' => 'required'
+        ]);
+
+        $id = $request->id;
+        $class_name = $request->class_name;
+        $ca = new Category();
+        $ca->id=$id;
+        $ca->class_name=$class_name;
+        $ca->save();
+        return back()->with('success','Class Added successfully!');
+     
     }
 
     /**
@@ -43,9 +56,11 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $categories = Category::all();
+        $data['categories'] = Category::all();
+        return view('classe.ViewData')->with($data);
     }
 
     /**
@@ -56,7 +71,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['categories']=Category::findOrfail($id);
+        return view('classe.Edit',$data);
+
     }
 
     /**
@@ -68,7 +85,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'class_name' => 'required'
+        ]);
+         $categories = Category::findOrfail($id);
+        $categories->class_name = $request->input('class_name');
+        $categories->update();
+        return back()->with('success','Class Updated successfully!');
     }
 
     /**
@@ -79,6 +102,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $categories = Category::findOrfail($id);
+        $categories->delete();
+        return back()->with('success','Class Deleted successfully!');
     }
 }

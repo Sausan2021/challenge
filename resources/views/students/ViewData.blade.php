@@ -5,7 +5,36 @@
 <div class="container">
     <h2>Show Students Details</h2>
     <div class="wpcf7" id="wpcf7-f156-p143-o1 formwrap">
+        <table class="table" border="1">
+            <thead class=" text-primary">
+              <th>
+                  Student Name
+              </th>
+              <th>
+                  student Birthdate
+              </th>
+              <th>
+                  Edit
+              </th>
+              <th>
+                  Delete
+              </th>
+            </thead>
+              <tbody>@if ($students)
+        @foreach ($students as $student)
+                <tr>
+                  
+          <td> <h6 class="mt-0">{{$student->name}}</h6></td> 
+          <td> <h6 class="mt-0">{{$student->name}}</h6></td> 
+           <td><a href="{{ url('studentEdit/'.$student->id) }}" class="btn btn-primary btn-round update ml-auto mr-auto" >Edit</a></td>
+           <td><a href="{{ url('studentDelete/'.$section->id) }}" class="btn btn-primary btn-round update ml-auto mr-auto" >Delete</a></td>
 
+                 </tr> @endforeach
+        @else
+        There is No Students Data to show..
+        @endif 
+              </tbody>
+            </table>
 
         <div id="link">
             <div style="width: 100%; height: 100%">

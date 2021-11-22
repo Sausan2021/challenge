@@ -19,16 +19,27 @@ Route::get('/', function () {
 
 //Home Page
 Route::view('/Home', 'Home');
+//Route::get('/bookList', 'BooKController@list');
 
 //students
 Route::view('/Students', 'Students');
 Route::view('/ViewDataS','ViewDataS');
 
 //Countries
-Route::view('/Countries', 'Countries');
-Route::view('/ViewDataC','ViewDataC');
+Route::get('/Countries', [\App\Http\CountryController::class, 'create']);
+Route::post('/countries/store', [\App\Http\CountryController::class, 'store']);
+Route::get('/countries/ViewData', [\App\Http\CountryController::class, 'show']);
+Route::get('/Edit/{id}',[\App\Http\CountryController::class, 'edit']);
+Route::post('/countryUpdate/{id}', [\App\Http\CountryController::class, 'update']);
+Route::get('/countryDelete/{id}', [\App\Http\CountryController::class, 'destroy']);
 
 //Classes
-Route::view('/Classes', 'Classes');
-Route::view('/ViewDataCl','ViewDataCl');
+Route::get('/Classes', '\App\Http\Controllers\CategoryController@create');
+Route::post('/classe/store', '\App\Http\Controllers\CategoryController@store');
+Route::get('/classe/ViewData', '\App\Http\Controllers\CategoryController@show');
+Route::get('/classEdit/{id}', '\App\Http\Controllers\CategoryController@edit');
+Route::post('/classUpdate/{id}', '\App\Http\Controllers\CategoryController@update');
+Route::get('/classDelete/{id}', '\App\Http\Controllers\CategoryController@destroy');
 
+
+//Route::get('/page', [PageController::class, 'index']);
