@@ -22,12 +22,13 @@ Route::view('/Home', 'Home');
 
 //students
 Route::view('/Students', 'Students');
+Route::view('/ViewDataS','ViewDataS');
 
 //Countries
 Route::view('/Countries', 'Countries');
+Route::view('/ViewDataC','ViewDataC');
 
 //Classes
 Route::view('/Classes', 'Classes');
+Route::view('/ViewDataCl','ViewDataCl');
 
-//Statistics
-Route::view('/Statistics', 'Statistics');

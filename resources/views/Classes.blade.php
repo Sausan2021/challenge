@@ -19,7 +19,40 @@
           <div class="wpcf7-response-output wpcf7-display-none">
           </div>
       </form>
+      <div id="link">
+        <div style="width: 100%; height: 100%">
+            <table>
+                <tr class="accept link_2">
+                <td><a href="/ViewDataCl" value="link_2">Make Updation</a></td>
+                    
+                </tr>
+              </table>
+        </div>
+      </div>
     </div>
+    <script>
+        $(".accept").click(function() {
+               $(".hidden_div").show("slow");
+               $("#link").hide("slow");
+               if($(this).hasClass("link_1")){
+                   $("#link_1").show("slow");
+               }
+               if($(this).hasClass("link_2")){
+                   $("#link_2").show("slow");
+               }
+               
+           });
+   
+               $("#close_tab_button").click(function() {
+               $("#link_1").hide("slow");
+               $("#link_2").hide("slow");
+               $(".hidden_div").hide("slow");
+               $("#link").show("slow");
+               //$($this).hide("slow");
+   
+           });     
+   
+    </script>
 </div>
 </div>
 

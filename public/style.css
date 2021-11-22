@@ -317,3 +317,17 @@ wrapper .sidebar ul li a:hover,
   width: 60%;
   padding: 10px;
 }
+a:link {
+  color: brown;
+  
+}
+a:visited {
+  color: rgb(158, 158, 158);
+  
+}
+a:hover{
+  color: hotpink;
+}
+a:active{
+  color: blue;
+}

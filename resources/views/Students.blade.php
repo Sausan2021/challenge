@@ -3,7 +3,7 @@
 @section('content')
 <div class="center m-3">
 <div class="container">
-    <h2>Add Students Details</h2>
+    <h2>Student Data</h2>
     <div class="wpcf7" id="wpcf7-f156-p143-o1 formwrap">
         <form action="/?page_id=143#wpcf7-f156-p143-o1" method="post" class="wpcf7-form" novalidate="novalidate">
             
@@ -15,12 +15,22 @@
                 <input type="date" name="date_of_birth"  size="40" class="emailinput wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="Email">
               </span>
              
-              <input type="submit" value="Save" class="wpcf7-form-control wpcf7-submit btn">
+              <input type="submit" value="Add" class="wpcf7-form-control wpcf7-submit btn">
               <img class="ajax-loader" src="http://www.jordancundiff.com/wp-content/plugins/contact-form-7/images/ajax-loader.gif" alt="Saving ..." style="visibility: hidden;">
           </p>
           <div class="wpcf7-response-output wpcf7-display-none">
           </div>
       </form>
+      <div id="link">
+        <div style="width: 100%; height: 100%">
+            <table>
+                <tr class="accept link_2">
+                <td><a href="/ViewDataS" value="link_2">Make Updation</a></td>
+                    
+                </tr>
+              </table>
+        </div>
+      </div> 
     </div>
     <script>
      $(".accept").click(function() {
