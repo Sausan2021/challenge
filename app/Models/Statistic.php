@@ -17,6 +17,7 @@ class Statistic extends Model
     {
          return $this->date_of_birth->age;
     }
+
     //relations
     public function student(){
         return $this->belongsToMany(Student::class, 'name','id');

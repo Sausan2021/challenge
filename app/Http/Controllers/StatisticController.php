@@ -46,16 +46,19 @@ class StatisticController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
    {
        $data['statistics'] = Statistic::all();
         return view('Home',$data);
      }
-    public function checkoutCategory()
+     //get age from birthdate
+    public function getAge()
     {
-        $data['categories'] = \Category::getContent();
-        return view('classe.ViewData',$data);
+        $data['students'] =Carbon::parse($students->date_of_birth)->diff(\Carbon\Carbon::now())->format('%y years, %m months and %d days');
+        
+        return view('Home',$data);
     }
+            //country details
     public function checkoutCountries()
     {
         $data['countries'] = \Country::getContent();

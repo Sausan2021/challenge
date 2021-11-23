@@ -31,22 +31,25 @@
                         Average age of students
                     </th>
                   </thead>
-                    {{-- <tbody>@if ($sections)
-              @foreach ($sections as $section) --}}
+                    <tbody>
+                      @if ($statistics)
+              @foreach ($statistics as $statistic)
                       <tr>
-                        
-                {{-- <td> <h6 class="mt-0">{{$section->name}}</h6></td> --}}
-                 {{-- <td><a href="{{ url('sectionEdit/'.$section->id) }}" class="btn btn-primary btn-round update ml-auto mr-auto" >Edit</a></td> --}}
-                 {{-- <td><a href="{{ url('sectionDelete/'.$section->id) }}" class="btn btn-primary btn-round update ml-auto mr-auto" >Delete</a></td> --}}
+                        <td>{{ $statistic->student_name}}</td>
+                        <td>{{ $statistic->country_name }}</td>
+                        <td>{{ $statistic->class_name }}</td>
+                        <td>{{ $statistic->count_per_country->getcl()->COUNT() }}</td>
+                        <td>{{ $statistic->count_per_class->getca()->COUNT() }}</td> 
+                        <td>{{ $statistic->average->getAge()->AVG() }}</td>
+             
 
-             <td></td>
-             <td></td>
-                     <td></td> 
-
-                      {{-- </tr> @endforeach
-              @else
-              There is No Statistics to show..
-              @endif --}}
+                      </tr> 
+                @endforeach
+              
+              
+                       @else
+                          There is No Statistics to show..
+                        @endif 
                     </tbody>
                   </table>
             </div>
