@@ -9,10 +9,12 @@ class Student extends Model
 {
     use HasFactory;
     public function country(){
-        return $this->belongsTo(Country::class);
+        
+        return $this->belongsToMany(Country::class,'id');
     }
     
     public function category(){
-        return $this->belongsTo(Category::class);
+        return $this->belongsToMany(Category::class,'id');
+     
     }
 }
