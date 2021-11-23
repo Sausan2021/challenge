@@ -22,16 +22,20 @@ Route::view('/Home', 'Home');
 //Route::get('/bookList', 'BooKController@list');
 
 //students
-Route::view('/Students', 'Students');
-Route::view('/ViewDataS','ViewDataS');
+Route::get('/Students', [\App\Http\Controllers\StudentsController::class, 'create']);
+Route::post('/Students/store', [\App\Http\Controllers\StudentsController::class, 'store']);
+Route::get('/Students/ViewData', [\App\Http\Controllers\StudentsController::class, 'show']);
+Route::get('/StudentsEdit/{id}',[\App\Http\Controllers\StudentsController::class, 'edit']);
+Route::post('/StudentsUpdate/{id}', [\App\Http\Controllers\StudentsController::class, 'update']);
+Route::get('/StudentsDelete/{id}', [\App\Http\Controllers\StudentsController::class, 'destroy']);
 
 //Countries
-Route::get('/Countries', [\App\Http\CountryController::class, 'create']);
-Route::post('/countries/store', [\App\Http\CountryController::class, 'store']);
-Route::get('/countries/ViewData', [\App\Http\CountryController::class, 'show']);
-Route::get('/Edit/{id}',[\App\Http\CountryController::class, 'edit']);
-Route::post('/countryUpdate/{id}', [\App\Http\CountryController::class, 'update']);
-Route::get('/countryDelete/{id}', [\App\Http\CountryController::class, 'destroy']);
+Route::get('/Countries', [\App\Http\Controllers\CountryController::class, 'create']);
+Route::post('/countries/store', [\App\Http\Controllers\CountryController::class, 'store']);
+Route::get('/countries/ViewData', [\App\Http\Controllers\CountryController::class, 'show']);
+Route::get('/countryEdit/{id}',[\App\Http\Controllers\CountryController::class, 'edit']);
+Route::post('/countryUpdate/{id}', [\App\Http\Controllers\CountryController::class, 'update']);
+Route::get('/countryDelete/{id}', [\App\Http\Controllers\CountryController::class, 'destroy']);
 
 //Classes
 Route::get('/Classes', '\App\Http\Controllers\CategoryController@create');

@@ -4,6 +4,7 @@
 <div class="center m-3">
 <div class="container">
     <h2>Show Students Details</h2>
+    @include('flash-message')
     <div class="wpcf7" id="wpcf7-f156-p143-o1 formwrap">
         <table class="table" border="1">
             <thead class=" text-primary">
@@ -25,9 +26,9 @@
                 <tr>
                   
           <td> <h6 class="mt-0">{{$student->name}}</h6></td> 
-          <td> <h6 class="mt-0">{{$student->name}}</h6></td> 
-           <td><a href="{{ url('studentEdit/'.$student->id) }}" class="btn btn-primary btn-round update ml-auto mr-auto" >Edit</a></td>
-           <td><a href="{{ url('studentDelete/'.$section->id) }}" class="btn btn-primary btn-round update ml-auto mr-auto" >Delete</a></td>
+          <td> <h6 class="mt-0">{{$student->date_of_birth}}</h6></td> 
+           <td><a href="{{ url('StudentsEdit/'.$student->id) }}" class="btn btn-primary btn-round update ml-auto mr-auto" >Edit</a></td>
+           <td><a href="{{ url('StudentsDelete/'.$student->id) }}" class="btn btn-primary btn-round update ml-auto mr-auto" >Delete</a></td>
 
                  </tr> @endforeach
         @else

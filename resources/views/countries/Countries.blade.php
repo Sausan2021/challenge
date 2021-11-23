@@ -27,7 +27,7 @@
         <div style="width: 100%; height: 100%">
             <table>
                 <tr class="accept link_2">
-                <td><a href="/ViewDataC" value="link_2">Make Updation</a></td>
+                <td><a href="/countries/ViewData" value="link_2">Make Updation</a></td>
                     
                 </tr>
               </table>

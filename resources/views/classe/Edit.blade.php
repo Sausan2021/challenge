@@ -17,7 +17,7 @@
                         <p>You Can Edit Classes Here</p>
                         <div class="form-row">
                             <div class="form-holder">
-                              <b>Class Name:</b>  <input type="text" placeholder="Class Name" class="form-control @error('class_name') is-invalid @enderror"  name="class_name" value="{{$classes->class_name}}">
+                              <b>Class Name:</b>  <input type="text" placeholder="Class Name" class="form-control @error('class_name') is-invalid @enderror"  name="class_name" value="{{$categories->class_name}}">
                             </div>
                         </div>
                         @error('class_name')

@@ -7,7 +7,7 @@
         <div class="col-md-8">
           <div class="card card-user">
             <div class="card-header">
-              <h1 class="card-title">Display Statistics</h1>
+              <h2 class="card-title">Display Statistics</h2>
             </div>
             <div class="card-body">
                 <table class="table" border="1">

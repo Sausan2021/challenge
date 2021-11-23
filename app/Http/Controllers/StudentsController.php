@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class StudentsController extends Controller
@@ -15,7 +15,8 @@ class StudentsController extends Controller
     {
         //
     }
-
+   
+ 
     /**
      * Show the form for creating a new resource.
      *
@@ -23,7 +24,7 @@ class StudentsController extends Controller
      */
     public function create()
     {
-        //
+        return view('Students.Students');
     }
 
     /**
@@ -34,7 +35,22 @@ class StudentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validates = $request->validate([
+            
+            'name' => 'required',
+            'date_of_birth' => 'required'
+        ]);
+
+        $id = $request->id;
+        $name = $request->name;
+        $date_of_birth=$request->date_of_birth;
+        $stud = new Student();
+        $stud->id=$id;
+        $stud->name=$name;
+        $stud->date_of_birth=$date_of_birth;
+        $stud->save();
+        return back()->with('success','Student Data Added successfully!');
+     
     }
 
     /**
@@ -43,9 +59,11 @@ class StudentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $students = Student::all();
+        $data['students'] = Student::all();
+        return view('Students.ViewData')->with($data);
     }
 
     /**
@@ -56,7 +74,9 @@ class StudentsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['students']=Student::findOrfail($id);
+        return view('Students.Edit',$data);
+
     }
 
     /**
@@ -68,7 +88,15 @@ class StudentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'date_of_birth' => 'required'
+        ]);
+         $students = Student::findOrfail($id);
+        $students->name = $request->input('name');
+        $students->date_of_birth = $request->input('date_of_birth');
+        $students->update();
+        return back()->with('success','Student Data Updated successfully!');
     }
 
     /**
@@ -79,6 +107,8 @@ class StudentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $students= Student::findOrfail($id);
+        $students->delete();
+        return back()->with('success','Student Data Deleted successfully!');
     }
 }

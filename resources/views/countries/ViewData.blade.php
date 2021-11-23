@@ -4,6 +4,7 @@
 <div class="center m-3">
 <div class="container">
     <h2>Show Countries Details</h2>
+    @include('flash-message')
     <div class="wpcf7" id="wpcf7-f156-p143-o1 formwrap">
         <table class="table" border="1">
             <thead class=" text-primary">
