@@ -21,13 +21,19 @@ class StatisticController extends Controller
         //                     ->join('countries','countries.id','=','statistics.country_id')
         //                     ->join('categories','categories.id','=','statistics.class_id')
         //                     ->get(['students.students.id','countries.country_id','categories.category_id']);
-                          $data['statistics'] = Statistic::all();
-                           return view('Home',compact($data));
+        //                  // $data['statistics'] = Statistic::all();
+                         $statistics=DB::table('statistics');
+                         $students=DB::table('students');
+                         $categories=DB::table('categories');
+                         $countries=DB::table('countries');
+                           return view('Home',compact('statistics','students','countries','categories'));
         // $students= DB::table('students')->avg();
         // $countries=DB::table('countries')->count();
         // $categories=DB::table('categories')->cont();
         // $statistics = Statistic::all();
         //return view('Home',compact('students','countries','categories'));
+         //$statistics = Statistic::all();
+                        //   $data['statistic'] = $this->Satistic::get('statistics');
     }
 
     /**

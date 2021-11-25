@@ -75,3 +75,9 @@ views/connections/index.blade.php
     @endforeach
 </table>
 The view without "$element->hosts->name" returns "comment" value but when I add the second line with "$element->hosts->name" I get an error "Trying to get property of non-object (View: /Applications/XAMPP/xamppfiles/htdocs/mdbms/resources/views/connections/index.blade.php)". I wonder where there's a mistake. --}}
+
+{{-- $data['task'] = Task::findOrfail($id);
+        $data['employees'] = Employee::select('id','Emp_full_name')->get();
+        $data['items'] = Item::select('id','item_name')->get();  
+        $data['services'] = Service::select('id','service_name')->get(); 
+        return view('tasks.edit', $data); --}}

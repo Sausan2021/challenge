@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 //Home Page
-Route::view('/Home', 'Home');
+Route::get('/Home', [\App\Http\Controllers\StatisticController::class, 'index']);
 //Route::get('/bookList', 'BooKController@list');
 
 //students

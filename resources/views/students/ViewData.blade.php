@@ -8,7 +8,13 @@
     <div class="wpcf7" id="wpcf7-f156-p143-o1 formwrap">
         <table class="table" border="1">
             <thead class=" text-primary">
-              <th>
+                <th>
+                    Class ID
+                </th>
+                <th>
+                    Country ID
+                </th>
+                <th>
                   Student Name
               </th>
               <th>
@@ -21,19 +27,23 @@
                   Delete
               </th>
             </thead>
-              <tbody>@if ($students)
+              <tbody>
+                  
+                  @if ($students)
         @foreach ($students as $student)
                 <tr>
-                  
-          <td> <h6 class="mt-0">{{$student->name}}</h6></td> 
-          <td> <h6 class="mt-0">{{$student->date_of_birth}}</h6></td> 
-           <td><a href="{{ url('StudentsEdit/'.$student->id) }}" class="btn btn-primary btn-round update ml-auto mr-auto" >Edit</a></td>
-           <td><a href="{{ url('StudentsDelete/'.$student->id) }}" class="btn btn-primary btn-round update ml-auto mr-auto" >Delete</a></td>
+                    <td><h6 class="mt-0">{{App\Models\Category::get($categories->class_id)}}</h6></td>  
+                    <td><h6 class="mt-0">{{App\Models\Country::get($countries->country_id)}}</h6></td>    
+                    <td> <h6 class="mt-0">{{$student->name}}</h6></td> 
+                    <td> <h6 class="mt-0">{{$student->date_of_birth}}</h6></td> 
+                    <td><a href="{{ url('StudentsEdit/'.$student->id) }}" class="btn btn-primary btn-round update ml-auto mr-auto" >Edit</a></td>
+                    <td><a href="{{ url('StudentsDelete/'.$student->id) }}" class="btn btn-primary btn-round update ml-auto mr-auto" >Delete</a></td>
 
-                 </tr> @endforeach
-        @else
-        There is No Students Data to show..
-        @endif 
+                 </tr> 
+        @endforeach
+             @else
+                 There is No Students Data to show
+             @endif 
               </tbody>
             </table>
 

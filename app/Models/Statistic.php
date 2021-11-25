@@ -8,6 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Statistic extends Model
 {
     use HasFactory;
+    protected $table = 'statistics';
+    protected $fillable=[
+        'student_id',
+        'class_id',
+            'country_id',
+            'count_per_class',
+            'count_per_country',
+            'average'
+    ];
     //convert birthdate to age
     protected $casts = [
         'date_of_birth' => 'date',
@@ -19,13 +28,13 @@ class Statistic extends Model
     }
 
     //relations
-    public function student(){
-        return $this->belongsToMany(Student::class, 'name','id');
+    public function students(){
+        return $this->hasMany(Student::class, 'student_id');
     }
-    public function category(){
-        return $this->belongsToMany(Category::class, 'class_name','id');
+    public function categories(){
+        return $this->belongsTo(Category::class, 'class_id');
     }
-    public function country(){
-        return $this->belongsToMany(Country::class, 'name','id');
+    public function countries(){
+        return $this->belongsTo(Country::class,'country_id');
     }
 }

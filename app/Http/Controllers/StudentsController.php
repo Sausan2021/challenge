@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Models\Student;
+use App\Models\Category;
+use App\Models\Country;
 use Illuminate\Http\Request;
+
 
 class StudentsController extends Controller
 {
@@ -13,7 +16,8 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        //
+        $students = Student::all();
+        return view('students.ViewData', compact('students'));
     }
    
  
@@ -35,20 +39,23 @@ class StudentsController extends Controller
      */
     public function store(Request $request)
     {
-        $validates = $request->validate([
-            
+        $validated = $request->validate([
+            'class_id'         =>'required',
+            'country_id'     => 'required',
             'name' => 'required',
-            'date_of_birth' => 'required'
+            'date_of_birth'  => 'required'
         ]);
 
-        $id = $request->id;
-        $name = $request->name;
-        $date_of_birth=$request->date_of_birth;
-        $stud = new Student();
-        $stud->id=$id;
-        $stud->name=$name;
-        $stud->date_of_birth=$date_of_birth;
-        $stud->save();
+       
+        
+        $std = new Student;
+        $std->class_id    =  $request->class_id;
+        $std->country_id =  $request->country_id;
+        $std->name  =  $request->name;
+        $std->date_of_birth  =  $request->date_of_birth;
+        $std->save();
+
+       
         return back()->with('success','Student Data Added successfully!');
      
     }
@@ -61,9 +68,16 @@ class StudentsController extends Controller
      */
     public function show()
     {
-        $students = Student::all();
-        $data['students'] = Student::all();
-        return view('Students.ViewData')->with($data);
+       
+        $data['categories'] = Category::select('id')->get();
+        $data['countries'] = Country::select('id')->get();
+        $students = Student::all(); 
+        $data['students'] = Student::all(); 
+        return view('Students.ViewData',$data);
+
+        // $students = Student::all();
+        // $data['students'] = Student::all();
+        // return view('Students.ViewData')->with($data);
     }
 
     /**

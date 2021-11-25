@@ -11,15 +11,15 @@
             </div>
             <div class="card-body">
                 <table class="table" border="1">
-                  <thead class=" text-primary">
+                  <thead class=" text-primary" width="50%">
                     <th>
-                        Student Name
+                        Student ID
                     </th>
                     <th>
-                        Country Name
+                        Country ID
                     </th>
                     <th>
-                        Class Name
+                        Class ID
                     </th>
                     <th>
                         Count of students per class
@@ -33,14 +33,14 @@
                   </thead>
                     <tbody>
                       @if ($statistics)
-              @foreach ($statistics as $statistic)
+              @foreach ($statistics->result() as $row)
                       <tr>
-                        <td>{{ $statistic->student_name}}</td>
-                        <td>{{ $statistic->country_name }}</td>
-                        <td>{{ $statistic->class_name }}</td>
-                        <td>{{ $statistic->count_per_country->getcl()->COUNT() }}</td>
-                        <td>{{ $statistic->count_per_class->getca()->COUNT() }}</td> 
-                        <td>{{ $statistic->average->getAge()->AVG() }}</td>
+                        <td>{{ Student::get($row->student_id)}}</td>
+                        <td>{{ Country::get($row->country_id)}}</td>
+                        <td>{{ Category::get($row->class_id)}}</td>
+                        <td>{{ $row->count_per_country }}</td>
+                        <td>{{ $row->count_per_class }}</td> 
+                        <td>{{ $row->average->getAge() }}</td>
              
 
                       </tr> 

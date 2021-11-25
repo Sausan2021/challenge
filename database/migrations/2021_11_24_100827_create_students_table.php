@@ -14,12 +14,18 @@ class CreateStudentsTable extends Migration
     public function up()
     {
         Schema::create('students', function (Blueprint $table) {
-            $table->id();
-            $table->integer('class_id')->onDelete('cascade');
-            $table->integer('country_id')->onDelete('cascade');
+            $table->increments('id');
+            $table->integer('class_id')->unsigned();
+            $table->foreign('class_id')->references('id')->on('categories');
+            // $table->integer('class_id')->unsigned();
+            // $table->foreign('class_id')->references('id')->on('categories');
+            $table->integer('country_id')->unsigned();
+            $table->foreign('country_id')->references('id')->on('countries');
             $table->string('name');
             $table->date('date_of_birth');
             $table->timestamps();
+            $table->rememberToken();
+    
         });
     }
 

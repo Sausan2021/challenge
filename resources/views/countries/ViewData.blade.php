@@ -22,7 +22,7 @@
         @foreach ($countries as $country)
                 <tr>
                   
-          <td> <h6 class="mt-0">{{$country->name}}</h6></td> 
+          <td> <h6>{{$country->name}}</h6></td> 
            <td><a href="{{ url('countryEdit/'.$country->id) }}" class="btn btn-primary btn-round update ml-auto mr-auto" >Edit</a></td>
            <td><a href="{{ url('countryDelete/'.$country->id) }}" class="btn btn-primary btn-round update ml-auto mr-auto" >Delete</a></td>
 

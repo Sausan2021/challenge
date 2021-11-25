@@ -8,13 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     use HasFactory;
-    public function country(){
+    protected $table = 'students';
+    protected $fillable=[
+        'class_id',
+         'country_id',
+          'name',
+          'date_of_birth'
+    ];
+    public function countries(){
         
-        return $this->belongsToMany(Country::class,'id');
+        return $this->belongsTo(Country::class,'country_id');
     }
     
-    public function category(){
-        return $this->belongsToMany(Category::class,'id');
+    public function categories(){
+        return $this->belongsTo(Category::class,'class_id');
      
     }
 }
