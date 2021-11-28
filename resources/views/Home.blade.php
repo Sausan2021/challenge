@@ -8,6 +8,7 @@
           <div class="card card-user">
             <div class="card-header">
               <h2 class="card-title">Display Statistics</h2>
+              <br>
             </div>
             <div class="card-body">
                 <table class="table" border="1">
@@ -33,14 +34,14 @@
                   </thead>
                     <tbody>
                       @if ($statistics)
-              @foreach ($statistics->result() as $row)
+              @foreach ($statistics as $row)
                       <tr>
-                        <td>{{ Student::get($row->student_id)}}</td>
-                        <td>{{ Country::get($row->country_id)}}</td>
-                        <td>{{ Category::get($row->class_id)}}</td>
-                        <td>{{ $row->count_per_country }}</td>
+                        <td><input name="id" value="{{$row->student_id}}"></td>
+                        <td><input name="id" value="{{$row->class_id}}"></td>
+                        <td><input name="id" value="{{$row->country_id}}"></td>
+                        <td>{{ $row->count_per_country}}</td>
                         <td>{{ $row->count_per_class }}</td> 
-                        <td>{{ $row->average->getAge() }}</td>
+                        <td>{{ $row->average }}</td>
              
 
                       </tr> 

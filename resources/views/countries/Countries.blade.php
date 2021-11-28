@@ -27,7 +27,7 @@
         <div style="width: 100%; height: 100%">
             <table>
                 <tr class="accept link_2">
-                <td><a href="/countries/ViewData" value="link_2">Make Updation</a></td>
+                <td><a href="{{ url('/countries/ViewData') }}" value="link_2">Make Updation</a></td>
                     
                 </tr>
               </table>
@@ -58,6 +58,9 @@
  
   </script>
 </div>
+<main class="py-4">
+  @yield('content')
+</main>
 </div>
 
 @endsection

@@ -5,7 +5,7 @@ use App\Models\Student;
 use App\Models\Category;
 use App\Models\Country;
 use Illuminate\Http\Request;
-
+use Auth;
 
 class StudentsController extends Controller
 {
@@ -46,17 +46,24 @@ class StudentsController extends Controller
             'date_of_birth'  => 'required'
         ]);
 
-       
+    
+        // $categories = Auth::categories()->class_id;
+        // $countries = Auth::countries()->country_id;
         
-        $std = new Student;
+        //$students = Student::all();
+        $id = $request->id;
+        $class_id=$request->class_id;
+        $country_id=$request->country_id;
+        $name = $request->name;
+        $std = new Student();
         $std->class_id    =  $request->class_id;
         $std->country_id =  $request->country_id;
         $std->name  =  $request->name;
         $std->date_of_birth  =  $request->date_of_birth;
         $std->save();
 
-       
         return back()->with('success','Student Data Added successfully!');
+        //return redirect()->route('Students', ['students' => $std->class_id,'students' => $std->country_id]);
      
     }
 

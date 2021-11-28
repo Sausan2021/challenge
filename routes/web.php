@@ -13,12 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function() {
     return view('Home');
 });
-
+Route::get('/', [\App\Http\Controllers\StatisticController::class, 'index']);
+//Route::resource('/', StatisticController::class);
 //Home Page
 Route::get('/Home', [\App\Http\Controllers\StatisticController::class, 'index']);
+//Route::get('/Home', [\App\Http\Controllers\StatisticController::class, 'index']);
 //Route::get('/bookList', 'BooKController@list');
 
 //students

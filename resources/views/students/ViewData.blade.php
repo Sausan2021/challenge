@@ -31,9 +31,12 @@
                   
                   @if ($students)
         @foreach ($students as $student)
+       
                 <tr>
-                    <td><h6 class="mt-0">{{App\Models\Category::get($categories->class_id)}}</h6></td>  
-                    <td><h6 class="mt-0">{{App\Models\Country::get($countries->country_id)}}</h6></td>    
+                     {{-- {{App\Models\Country::get($countries->country_id)}}
+                    {{App\Models\Category::get($categories->class_id)}} --}}
+                    <td><h6 class="mt-0"><input name="id" value="{{$student->class_id}}"></h6></td>  
+                    <td><h6 class="mt-0"><input name="id" value="{{$student->country_id}}"></h6></td>    
                     <td> <h6 class="mt-0">{{$student->name}}</h6></td> 
                     <td> <h6 class="mt-0">{{$student->date_of_birth}}</h6></td> 
                     <td><a href="{{ url('StudentsEdit/'.$student->id) }}" class="btn btn-primary btn-round update ml-auto mr-auto" >Edit</a></td>

@@ -25,6 +25,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
       <link rel="stylesheet" type="text/css" href="style.css">
+      <link href="{{ asset('css/style.css') }}" rel="stylesheet">
         <title>Rihal- Full Stack</title>
     </head>
     <body>

@@ -31,6 +31,7 @@
                                 <div class="update ml-auto mr-auto">
                                   <button type="submit" class="btn btn-primary btn-round">Save changes</button>
                                 </div>
+                                <a href="/Countries">Go back</a>
                               </div>
                             </form>
                         </div>

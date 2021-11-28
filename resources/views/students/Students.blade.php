@@ -8,22 +8,28 @@
         <form action="/Students/store" method="POST" class="wpcf7-form" novalidate="novalidate">
             @csrf
             @include('flash-message')
-            <p>
+            <div class="col-md-3 px-1">
+              <div class="form-group">
                <span class="wpcf7-form-control-wrap Name">
                  <input type="text" name="name" value="" size="40" class="nameinput wpcf7-form-control wpcf7-text wpcf7-validates-as-required @error('name') is-invalid @enderror" aria-required="true" aria-invalid="false" placeholder="Student Name">
-                  @error('name')
+               </span>
+              </div> 
+                 @error('name')
                  <div style="color: red">{{ $message }}</div>
                   @enderror
+            </div>
+             
+            <div class="col-md-3 px-1">
+              <div class="form-group">
+              <span class="wpcf7-form-control-wrap Date">
+                 <input type="date" name="date_of_birth" id="birthday" size="40" class="dateinput wpcf7-form-control wpcf7-text wpcf7-validates-as-required  @error('date_of_birth') is-invalid @enderror" aria-required="true" aria-invalid="false" placeholder="Birth Date">
                 </span>
-              </p>
-              <p>
-              <span class="wpcf7-form-control-wrap Email">
-                <input type="date" name="date_of_birth"  size="40" class="emailinput wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email @error('date_of_birth') is-invalid @enderror" aria-required="true" aria-invalid="false" placeholder="Birth Date">
-                 @error('date_of_birth')
+              </div>
+              @error('date_of_birth')
                 <div style="color: red">{{ $message }}</div>
                  @enderror
-              </span>
-            </p>
+            </div>
+           
               <input type="submit" value="Add" class="wpcf7-form-control wpcf7-submit btn">
               <img class="ajax-loader" src="http://www.jordancundiff.com/wp-content/plugins/contact-form-7/images/ajax-loader.gif" alt="Saving ..." style="visibility: hidden;">
          

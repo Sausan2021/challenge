@@ -41,7 +41,7 @@ class CountryController extends Controller
         ]);
 
         $id = $request->id;
-        $name = $request->_name;
+        $name = $request->name;
         $ca = new Country();
         $ca->id=$id;
         $ca->name=$name;
@@ -60,7 +60,8 @@ class CountryController extends Controller
     {
         $countries = Country::all();
         $data['countries'] = Country::all();
-        return view('countries.ViewData')->with($data);
+        return view('/countries/ViewData',$data);
+        //response()->json(['countries.ViewData',$data]);
     }
 
     /**
